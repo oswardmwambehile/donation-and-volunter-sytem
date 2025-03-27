@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+    <div class="container mt-5 vh-100 table-responsive">
+        <table id="mytable" class="table data">
+            <thead class="table-dark">
+                <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Donor Details</th>
+                    <th scope="col">Volunteer Details</th>
+                  </tr>
+            </thead>
+            <tbody>
+                {%for gal in gallery%}
+                  <tr class="text-center">
+                    <th>{{forloop.counter}}</th>
+                    <td >
+                        <h3 >{{gal.donation.donattionname}}</h3>
+                        <img src="{{gal.deliverypic.url}}" width="150" height="150" />
+                        <h5>Donation Area : {{gal.donation.donationarea.arename}}</h5>
+                        <h5>Donation Date : {{gal.donation.donationdate}}</h5>
+                    </td>
+                    <td>
+                        <div>
+                            <img class="rounded-circle" src="{{gal.donation.donor.userpic.url}}" width="80" height="80" />
+                        </div>
+                        <h4>Name : {{gal.donation.donor.user.first_name}} {{gal.donation.donor.user.last_name}}</h4>
+                        <h4>Email : {{gal.donation.donor.user.email}}</h4>
+                        <h4>Contact : {{gal.donation.donor.contact}}</h4>
+                    </td>
+                    <td>
+                        <div>
+                            <img class="rounded-circle" src="{{gal.donation.volunteer.userpic.url}}" width="80" height="80" />
+                        </div>
+                        <h4>Name :  {{gal.donation.volunteer.user.first_name}} {{gal.donation.volunteer.user.last_name}}</h4>
+                        <h4>Email : {{gal.donation.volunteer.user.email}}</h4>
+                        <h4>Contact : {{gal.donation.volunteer.contact}}</h4>
+                    </td>
+                  </tr>
+                  {%endfor%}
+            </tbody>
+        </table>
+      </div>
+{% endblock main %}

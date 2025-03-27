@@ -1,0 +1,75 @@
+{% extends 'base-db-donor.html' %}
+{% load static %}
+{% block main %}
+<div class="container mt-5 vh-100 table-responsive">
+    <h3>Change Password</h3>
+    <hr>
+    <div class="row">
+
+        <div class="col-lg-12 p-2">
+           
+           
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  {{ form.old_password.label_tag }} 
+                  {{ form.old_password }}
+                  {% if form.old_password.errors %}
+                    <div class="text-danger">
+                      {% for error in form.old_password.errors %}
+                        <p>{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+          
+                <div class="form-group">
+                  {{ form.new_password1.label_tag }} 
+                  {{ form.new_password1 }}
+                  {% if form.new_password1.errors %}
+                    <div class="text-danger">
+                      {% for error in form.new_password1.errors %}
+                        <p>{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+          
+                <div class="form-group">
+                  {{ form.new_password2.label_tag }} 
+                  {{ form.new_password2 }}
+                  {% if form.new_password2.errors %}
+                    <div class="text-danger">
+                      {% for error in form.new_password2.errors %}
+                        <p>{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+                <br><br>
+          
+                <button type="submit" class="btn btn-primary">Change Password</button>
+              </form>
+                </div>
+            </div>
+            
+            
+
+            {% if messages %}
+                <div class="space-y-4">
+                    {% for message in messages %}
+                        <div class="alert 
+                            {% if message.tags == 'error' %} alert-danger
+                            {% else %} alert-success
+                            {% endif %} d-flex align-items-center mb-4" role="alert">
+                            <div>
+                                <strong>{{ message }}</strong>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock main %}

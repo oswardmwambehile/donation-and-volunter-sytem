@@ -1,0 +1,66 @@
+{% extends 'base-db-donor.html' %}
+{% load static %}
+
+{% block main %}
+<div class="container mt-5 vh-100 table-responsive">
+    <h3>Donate Now</h3>
+    <hr>
+    <div class="row">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                {{ form.donationname.label_tag }} 
+                {{ form.donationname }}
+                {% if form.donationname.errors %}
+                    <div class="text-danger">
+                        {% for error in form.donationname.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.donationpic.label_tag }} 
+                {{ form.donationpic }}
+                {% if form.donationpic.errors %}
+                    <div class="text-danger">
+                        {% for error in form.donationpic.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.collectionloc.label_tag }} 
+                {{ form.collectionloc }}
+                {% if form.collectionloc.errors %}
+                    <div class="text-danger">
+                        {% for error in form.collectionloc.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.description.label_tag }} 
+                {{ form.description }}
+                {% if form.description.errors %}
+                    <div class="text-danger">
+                        {% for error in form.description.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Donate Happiness" class="m-2 px-3 btn btn-danger">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock main %}
